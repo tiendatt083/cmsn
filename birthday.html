@@ -241,10 +241,13 @@
             }
         </style>
     </head>
+
     <body>
         <div class="bg-glow"></div>
         <canvas class="confetti"></canvas>
+        <!-- Ảnh nền chảy từ trên xuống -->
         <div class="gallery-animate" id="galleryAnimate"></div>
+        <!-- Thiệp giữa màn hình -->
         <div class="gift-center" id="giftCenter">
             <div class="gift-box" id="giftBox" title="Bấm để mở quà">
                 <img
@@ -255,16 +258,13 @@
             </div>
         </div>
         <div class="card-wrap" id="cardWrap">
-            <div class="birthday-card">
-                <h1>Chúc mừng sinh nhật Nhung nhó 🎂</h1>
+            <div class="birthday-card" id="birthdayCard">
+                <h1>Chúc mừng sinh nhật Nhung 🎂</h1>
                 <div class="msg">
-                    Chúc tình yêy của tui luôn xinh đẹp, rạng rỡ, thật nhiều
-                    niềm vui và may mắn trong cuộc sống.<br />
-                    Mãi đáng yêu và thành công nha, xinh thế này chắc chắn có bồ
-                    rồi nhưng mà giấu đúng không??<br />
-                    Hơi bị nhớ cậu rồi đó, nghe nói tết cậu zìa, hẹn cậu dịp tết
-                    nha.. Mãi yêu
-                    <span style="font-size: 1.6rem; color: #ffb3e9"
+                    Chúc Nhung luôn xinh đẹp, rạng rỡ,<br />
+                    thật nhiều niềm vui và may mắn trong cuộc sống.<br />
+                    Mãi đáng yêu và thành công nhé!<br />
+                    <span style="font-size: 1.7rem; color: #ffb3e9"
                         >💖🌷✨</span
                     >
                 </div>
@@ -332,7 +332,7 @@
             }
             drawConfetti();
 
-            // --------- ẢNH HIỆU ỨNG ZOOM-OUT VÀ FADE-OUT, LẶP VĨNH VIỄN SAU KHI MỞ QUÀ -----------
+            // --------- ẢNH CHẢY TỪ TRÊN XUỐNG, LẶP VĨNH VIỄN SAU KHI MỞ QUÀ -----------
             const galleryImages = [
                 "anh/0.jpg",
                 "anh/1.jpg",
@@ -358,11 +358,10 @@
                 "anh/21.jpg",
                 "anh/22.jpg",
             ];
-
             const galleryAnimate = document.getElementById("galleryAnimate");
             let startShowImages = false;
 
-            function showZoomFadeImage() {
+            function showSlideDownImage() {
                 if (!startShowImages) return;
                 const src =
                     galleryImages[
@@ -370,41 +369,42 @@
                     ];
                 const img = document.createElement("img");
                 img.src = src;
-                // Size lớn hơn, random từ 180–270px (mobile 100–170)
+
+                // Kích thước random
                 let w = Math.floor(
-                    window.innerWidth > 600
-                        ? Math.random() * 90 + 180
-                        : Math.random() * 70 + 100
+                    window.innerWidth > 650
+                        ? Math.random() * 70 + 150
+                        : Math.random() * 55 + 100
                 );
-                let h = Math.floor(w * 1.25);
+                let h = Math.floor(w * 1.5);
                 img.style.width = w + "px";
                 img.style.height = h + "px";
-                img.style.left =
-                    Math.random() * (window.innerWidth - w - 60) + 30 + "px";
-                img.style.top =
-                    Math.random() * (window.innerHeight - h - 60) + 30 + "px";
-
+                // Vị trí ngang random, tránh chính giữa (để không che card)
+                let leftMin = window.innerWidth * 0.05;
+                let leftMax = window.innerWidth * 0.85 - w;
+                let left = Math.random() * (leftMax - leftMin) + leftMin;
+                img.style.left = left + "px";
+                img.style.top = "-" + h + "px";
                 img.style.opacity = 0;
-                img.style.transform = "scale(1.6)";
+
+                img.style.transition = "opacity 1.2s";
                 galleryAnimate.appendChild(img);
 
-                // Zoom out nhanh, rồi fade ra dần
+                // Delay rồi slide xuống (đồng thời fade-in)
                 setTimeout(() => {
-                    img.style.transition =
-                        "transform 1.7s cubic-bezier(.45,1.5,.63,.99), opacity 1.6s cubic-bezier(.45,1.5,.63,.99)";
-                    img.style.transform = "scale(1)";
-                    img.style.opacity = 0.94;
+                    img.style.opacity = 0.85;
+                    img.style.transition = "top 4.6s linear, opacity 1.6s";
+                    img.style.top = window.innerHeight + h + "px";
                 }, 40);
 
-                // Sau 2.5s, tiếp tục zoom out và fade-out rồi xóa ảnh
+                // Khi xuống tới cuối, fade-out và xóa
                 setTimeout(() => {
-                    img.style.transition = "transform 1.4s, opacity 1.4s";
-                    img.style.transform = "scale(0.01)";
+                    img.style.transition = "opacity 1.3s";
                     img.style.opacity = 0;
                     setTimeout(() => {
                         if (img.parentNode) galleryAnimate.removeChild(img);
-                    }, 1200);
-                }, 2100);
+                    }, 1100);
+                }, 4200); // Tổng thời gian slide xuống
             }
 
             // Khi đã mở quà, bắt đầu show ảnh vĩnh viễn
@@ -413,9 +413,9 @@
                 startShowImages = true;
                 galleryAnimate.classList.add("show");
                 // Hiển thị nhiều ảnh cùng lúc ban đầu
-                for (let i = 0; i < 10; i++)
-                    setTimeout(showZoomFadeImage, i * 160 + 30);
-                setInterval(showZoomFadeImage, 330); // nhiều ảnh liên tục
+                for (let i = 0; i < 8; i++)
+                    setTimeout(showSlideDownImage, i * 350 + 40);
+                setInterval(showSlideDownImage, 480); // ảnh chảy liên tục
             }
 
             const giftBox = document.getElementById("giftBox");
