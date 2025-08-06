@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Chúc Mừng Sinh Nhật Nhung 🎂</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --main-gradient: linear-gradient(
+                    120deg,
+                    #ffe7f6 0%,
+                    #fceabb 100%
+                );
+                --main-gradient2: linear-gradient(
+                    135deg,
+                    #fbc2eb 0%,
+                    #f8ffae 100%
+                );
+            }
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                font-family: "Quicksand", Arial, sans-serif;
+                background: var(--main-gradient);
+                overflow-x: hidden;
+                min-height: 100vh;
+                position: relative;
+            }
+            .bg-glow {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 0;
+                pointer-events: none;
+                background: radial-gradient(
+                        circle at 60% 20%,
+                        #ffe5ecaa 0%,
+                        transparent 45%
+                    ),
+                    radial-gradient(
+                        circle at 40% 70%,
+                        #f8ffae88 0%,
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        circle at 80% 90%,
+                        #c1f0fb7a 0%,
+                        transparent 40%
+                    ),
+                    radial-gradient(
+                        circle at 20% 90%,
+                        #eec9fc77 0%,
+                        transparent 60%
+                    ),
+                    var(--main-gradient2);
+                animation: movebg 12s linear infinite alternate;
+                opacity: 0.82;
+                transition: background 1s;
+            }
+            @keyframes movebg {
+                0% {
+                    filter: blur(0px) brightness(1);
+                }
+                50% {
+                    filter: blur(3px) brightness(1.08);
+                }
+                100% {
+                    filter: blur(0px) brightness(1);
+                }
+            }
+            .confetti {
+                pointer-events: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 2;
+            }
+            .gallery-animate {
+                position: fixed;
+                z-index: 7;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                pointer-events: none;
+                overflow: visible;
+                /* Hiển thị khi mở quà */
+                display: none;
+            }
+            .gallery-animate.show {
+                display: block;
+            }
+            .gallery-animate img {
+                position: absolute;
+                border-radius: 32px;
+                box-shadow: 0 6px 48px #ffc5ec95;
+                opacity: 0;
+                will-change: transform, opacity;
+                pointer-events: none;
+                object-fit: cover;
+            }
+            .gift-center {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                min-height: 100dvh;
+                z-index: 10;
+                position: relative;
+            }
+            .gift-box {
+                width: 200px;
+                height: 200px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: filter 0.18s;
+                animation: shake 1.6s infinite
+                    cubic-bezier(0.8, 0.05, 0.65, 0.95);
+                filter: drop-shadow(0 8px 30px #ffd6e0a6);
+                position: relative;
+                z-index: 10;
+            }
+            @keyframes shake {
+                0% {
+                    transform: scale(1) rotate(-4deg);
+                }
+                15% {
+                    transform: scale(1.01) rotate(5deg);
+                }
+                35% {
+                    transform: scale(0.97) rotate(-5deg);
+                }
+                55% {
+                    transform: scale(1.02) rotate(2deg);
+                }
+                70% {
+                    transform: scale(1) rotate(0);
+                }
+                100% {
+                    transform: scale(1) rotate(-4deg);
+                }
+            }
+            .card-wrap {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                height: 100vh;
+                z-index: 20;
+                background: rgba(255, 255, 255, 0.09);
+                transition: opacity 0.7s;
+                opacity: 0;
+                pointer-events: none;
+            }
+            .card-wrap.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .birthday-card {
+                background: #fffbe7;
+                border-radius: 32px;
+                box-shadow: 0 6px 40px #ffd9e7a9;
+                border: 2.5px solid #ffd6e0;
+                padding: 32px 38px 28px 38px;
+                min-width: 330px;
+                max-width: 95vw;
+                margin: 0 auto;
+                text-align: center;
+                transform: translateY(90px) scale(0.8) rotateX(60deg);
+                opacity: 0;
+                animation: openCard 0.88s 0.1s
+                    cubic-bezier(0.77, -0.01, 0.42, 1.06) forwards;
+                position: relative;
+                overflow: visible;
+            }
+            @keyframes openCard {
+                to {
+                    transform: none;
+                    opacity: 1;
+                }
+            }
+            .birthday-card h1 {
+                font-family: "Pacifico", cursive;
+                color: #ff63a5;
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+                margin-top: 0;
+                letter-spacing: 2px;
+                text-shadow: 0 2px 18px #ffb3c9a2, 0 0 6px #fff;
+            }
+            .birthday-card .msg {
+                color: #5c3457;
+                font-size: 1.18rem;
+                font-weight: 500;
+                margin-bottom: 20px;
+                font-family: "Quicksand", Arial, sans-serif;
+                line-height: 1.7;
+                background: linear-gradient(
+                    90deg,
+                    #ffbddf99 0%,
+                    #fffbe799 100%
+                );
+                border-radius: 17px;
+                padding: 12px 12px 6px 12px;
+            }
+            @media (max-width: 650px) {
+                .gift-box {
+                    width: 130px;
+                    height: 130px;
+                }
+                .birthday-card {
+                    padding: 14vw 4vw 7vw 4vw;
+                    min-width: 0;
+                }
+            }
+            @media (max-width: 420px) {
+                .birthday-card h1 {
+                    font-size: 1.3rem;
+                }
+                .birthday-card .msg {
+                    font-size: 1.02rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bg-glow"></div>
+        <canvas class="confetti"></canvas>
+        <div class="gallery-animate" id="galleryAnimate"></div>
+        <div class="gift-center" id="giftCenter">
+            <div class="gift-box" id="giftBox" title="Bấm để mở quà">
+                <img
+                    src="/pngtree-3d-gift-box-wrapped-golden-ribbon-vector-on-transparent-background-png-image_6443775.png"
+                    alt="giftbox"
+                    style="width: 150%; height: 150%"
+                />
+            </div>
+        </div>
+        <div class="card-wrap" id="cardWrap">
+            <div class="birthday-card">
+                <h1>Chúc mừng sinh nhật Nhung nhó 🎂</h1>
+                <div class="msg">
+                    Chúc tình yêy của tui luôn xinh đẹp, rạng rỡ, thật nhiều
+                    niềm vui và may mắn trong cuộc sống.<br />
+                    Mãi đáng yêu và thành công nha, xinh thế này chắc chắn có bồ
+                    rồi nhưng mà giấu đúng không??<br />
+                    Hơi bị nhớ cậu rồi đó, nghe nói tết cậu zìa, hẹn cậu dịp tết
+                    nha.. Mãi yêu
+                    <span style="font-size: 1.6rem; color: #ffb3e9"
+                        >💖🌷✨</span
+                    >
+                </div>
+            </div>
+        </div>
+        <script>
+            // -------- HOA GIẤY RƠI --------
+            const confetti = document.querySelector(".confetti");
+            const cCtx = confetti.getContext("2d");
+            let cw = window.innerWidth,
+                ch = window.innerHeight;
+            confetti.width = cw;
+            confetti.height = ch;
+            window.onresize = () => {
+                cw = window.innerWidth;
+                ch = window.innerHeight;
+                confetti.width = cw;
+                confetti.height = ch;
+            };
+            const colors = [
+                "#ffb3e9",
+                "#ffcad4",
+                "#ffe7f6",
+                "#ffe7a2",
+                "#e4e6fa",
+                "#fffbe7",
+            ];
+            let pieces = Array.from({ length: 55 }).map(() => ({
+                x: Math.random() * cw,
+                y: Math.random() * ch,
+                r: Math.random() * 12 + 7,
+                d: Math.random() * 2 + 1,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                tilt: Math.random() * 16 - 8,
+                tiltAngleIncremental: Math.random() * 0.09 + 0.03,
+                tiltAngle: 0,
+            }));
+            function drawConfetti() {
+                cCtx.clearRect(0, 0, cw, ch);
+                for (let p of pieces) {
+                    cCtx.beginPath();
+                    cCtx.lineWidth = p.r / 3;
+                    cCtx.strokeStyle = p.color;
+                    cCtx.moveTo(p.x + p.tilt + 4, p.y);
+                    cCtx.lineTo(p.x, p.y + p.tilt + p.r);
+                    cCtx.stroke();
+                }
+                updateConfetti();
+                requestAnimationFrame(drawConfetti);
+            }
+            function updateConfetti() {
+                for (let p of pieces) {
+                    p.y += (Math.cos(p.d) + 3 + p.r / 8) / 2.4;
+                    p.x += Math.sin(p.d);
+                    p.tiltAngle += p.tiltAngleIncremental;
+                    p.tilt = Math.sin(p.tiltAngle - p.r / 6) * 14;
+                    if (p.y > ch + 16) {
+                        p.x = Math.random() * cw;
+                        p.y = -8;
+                    }
+                    if (p.x > cw + 12 || p.x < -12) {
+                        p.x = Math.random() * cw;
+                    }
+                }
+            }
+            drawConfetti();
+
+            // --------- ẢNH HIỆU ỨNG ZOOM-OUT VÀ FADE-OUT, LẶP VĨNH VIỄN SAU KHI MỞ QUÀ -----------
+            const galleryImages = [
+                "anh/0.jpg",
+                "anh/1.jpg",
+                "anh/2.jpg",
+                "anh/3.jpg",
+                "anh/4.jpg",
+                "anh/5.jpg",
+                "anh/6.jpg",
+                "anh/7.jpg",
+                "anh/8.jpg",
+                "anh/9.jpg",
+                "anh/10.jpg",
+                "anh/11.jpg",
+                "anh/12.jpg",
+                "anh/13.jpg",
+                "anh/14.jpg",
+                "anh/15.jpg",
+                "anh/16.jpg",
+                "anh/17.jpg",
+                "anh/18.jpg",
+                "anh/19.jpg",
+                "anh/20.jpg",
+                "anh/21.jpg",
+                "anh/22.jpg",
+            ];
+
+            const galleryAnimate = document.getElementById("galleryAnimate");
+            let startShowImages = false;
+
+            function showZoomFadeImage() {
+                if (!startShowImages) return;
+                const src =
+                    galleryImages[
+                        Math.floor(Math.random() * galleryImages.length)
+                    ];
+                const img = document.createElement("img");
+                img.src = src;
+                // Size lớn hơn, random từ 180–270px (mobile 100–170)
+                let w = Math.floor(
+                    window.innerWidth > 600
+                        ? Math.random() * 90 + 180
+                        : Math.random() * 70 + 100
+                );
+                let h = Math.floor(w * 1.25);
+                img.style.width = w + "px";
+                img.style.height = h + "px";
+                img.style.left =
+                    Math.random() * (window.innerWidth - w - 60) + 30 + "px";
+                img.style.top =
+                    Math.random() * (window.innerHeight - h - 60) + 30 + "px";
+
+                img.style.opacity = 0;
+                img.style.transform = "scale(1.6)";
+                galleryAnimate.appendChild(img);
+
+                // Zoom out nhanh, rồi fade ra dần
+                setTimeout(() => {
+                    img.style.transition =
+                        "transform 1.7s cubic-bezier(.45,1.5,.63,.99), opacity 1.6s cubic-bezier(.45,1.5,.63,.99)";
+                    img.style.transform = "scale(1)";
+                    img.style.opacity = 0.94;
+                }, 40);
+
+                // Sau 2.5s, tiếp tục zoom out và fade-out rồi xóa ảnh
+                setTimeout(() => {
+                    img.style.transition = "transform 1.4s, opacity 1.4s";
+                    img.style.transform = "scale(0.6)";
+                    img.style.opacity = 0;
+                    setTimeout(() => {
+                        if (img.parentNode) galleryAnimate.removeChild(img);
+                    }, 1400);
+                }, 2500);
+            }
+
+            // Khi đã mở quà, bắt đầu show ảnh vĩnh viễn
+            function startImageEffect() {
+                if (startShowImages) return;
+                startShowImages = true;
+                galleryAnimate.classList.add("show");
+                // Hiển thị nhiều ảnh cùng lúc ban đầu
+                for (let i = 0; i < 10; i++)
+                    setTimeout(showZoomFadeImage, i * 160 + 30);
+                setInterval(showZoomFadeImage, 330); // nhiều ảnh liên tục
+            }
+
+            const giftBox = document.getElementById("giftBox");
+            const cardWrap = document.getElementById("cardWrap");
+            const giftCenter = document.getElementById("giftCenter");
+            giftBox.onclick = function () {
+                giftBox.style.transition =
+                    "all 0.7s cubic-bezier(.53,2,.69,.81)";
+                giftBox.style.transform = "scale(.16) rotate(-24deg)";
+                giftBox.style.opacity = "0";
+                setTimeout(() => {
+                    giftCenter.style.display = "none";
+                    cardWrap.classList.add("active");
+                    startImageEffect();
+                }, 700);
+            };
+        </script>
+    </body>
+</html>
