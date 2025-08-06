@@ -399,12 +399,12 @@
                 // Sau 2.5s, tiếp tục zoom out và fade-out rồi xóa ảnh
                 setTimeout(() => {
                     img.style.transition = "transform 1.4s, opacity 1.4s";
-                    img.style.transform = "scale(0.6)";
+                    img.style.transform = "scale(0.01)";
                     img.style.opacity = 0;
                     setTimeout(() => {
                         if (img.parentNode) galleryAnimate.removeChild(img);
-                    }, 1400);
-                }, 2500);
+                    }, 1200);
+                }, 2100);
             }
 
             // Khi đã mở quà, bắt đầu show ảnh vĩnh viễn
