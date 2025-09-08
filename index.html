@@ -2,158 +2,160 @@
 <html lang="vi">
     <head>
         <meta charset="UTF-8" />
-        <title>Chúc Mừng Sinh Nhật!</title>
+        <title>Happy Birthday 💖</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Comic+Neue:wght@700&display=swap"
+            rel="stylesheet"
+        />
         <style>
             body {
                 min-height: 100vh;
-                background: #fff6e9;
+                background: linear-gradient(135deg, #ffe6f2, #ffe6ff, #e6f7ff);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-family: "Segoe UI", Arial, sans-serif;
-                position: relative;
+                font-family: "Quicksand", sans-serif;
                 overflow: hidden;
             }
-            /* Confetti background */
+
+            /* Background cute */
             body:before {
-                content: "";
+                content: "✨🌸💖🎀⭐";
                 position: fixed;
                 inset: 0;
-                z-index: 0;
+                font-size: 2rem;
+                text-align: center;
+                line-height: 100vh;
+                color: #ffc6e0;
+                opacity: 0.1;
                 pointer-events: none;
-                background-image: radial-gradient(
-                        circle,
-                        #ffadad 4px,
-                        transparent 5px
-                    ),
-                    radial-gradient(circle, #ffd6a5 4px, transparent 5px),
-                    radial-gradient(circle, #fdffb6 4px, transparent 5px),
-                    radial-gradient(circle, #caffbf 4px, transparent 5px),
-                    radial-gradient(circle, #9bf6ff 4px, transparent 5px),
-                    radial-gradient(circle, #bdb2ff 4px, transparent 5px);
-                background-size: 80px 80px;
-                background-position: 0 0, 40px 40px, 20px 60px, 60px 20px,
-                    30px 70px, 70px 30px;
-                opacity: 0.25;
             }
+
             .container {
                 display: flex;
                 background: #fff;
-                border-radius: 32px;
-                box-shadow: 0 4px 32px 0 #fae2b79c;
-                padding: 40px 30px;
+                border-radius: 40px;
+                box-shadow: 0 4px 20px rgba(255, 182, 193, 0.4);
+                padding: 35px 28px;
                 z-index: 1;
-                max-width: 750px;
-                width: 90vw;
+                max-width: 720px;
+                width: 92vw;
+                border: 3px dashed #ffc6e0;
             }
+
             .left {
                 flex: 1.2;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                padding-right: 35px;
-                border-right: 2px solid #f7d9c7;
+                padding-right: 25px;
+                border-right: 2px dotted #ffd6f5;
             }
             .left img {
-                width: 220px;
-                height: 220px;
+                width: 200px;
+                height: 200px;
                 object-fit: cover;
-                border-radius: 20px;
-                margin-bottom: 30px;
-                box-shadow: 0 2px 18px #ffe5d3c4;
+                border-radius: 50%;
+                margin-bottom: 25px;
+                border: 5px solid #ffe6f2;
                 background: #fff;
+                box-shadow: 0 3px 15px rgba(255, 150, 200, 0.3);
             }
             .left .welcome {
-                font-size: 1.35rem;
-                color: #444;
+                font-size: 1.4rem;
+                color: #ff6fa9;
                 text-align: center;
-                font-weight: 500;
+                font-weight: 700;
+                font-family: "Comic Neue", cursive;
             }
+
             .right {
                 flex: 1.2;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: center;
-                padding-left: 35px;
+                padding-left: 25px;
             }
             .right label {
-                font-size: 1.15rem;
-                color: #333;
-                font-weight: 500;
-                margin-bottom: 8px;
+                font-size: 1.1rem;
+                color: #ff5fa2;
+                font-weight: 600;
+                margin-bottom: 6px;
             }
             .right input[type="text"] {
-                font-size: 1.05rem;
+                font-size: 1rem;
                 padding: 10px;
                 width: 220px;
-                border: 1.5px solid #f9d8b9;
-                border-radius: 9px;
-                margin-bottom: 22px;
-                background: #faf9f6;
-                transition: border 0.2s;
+                border: 2px solid #ffc6e0;
+                border-radius: 15px;
+                margin-bottom: 20px;
+                background: #fffafc;
                 outline: none;
             }
             .right input[type="text"]:focus {
-                border: 1.5px solid #ffadad;
+                border-color: #ff8dc7;
+                box-shadow: 0 0 6px #ffb0d8;
             }
+
             .number-pad {
                 display: grid;
-                grid-template-columns: repeat(3, 50px);
+                grid-template-columns: repeat(3, 55px);
                 gap: 10px;
                 margin-bottom: 25px;
             }
             .number-pad button {
-                font-size: 1.4rem;
-                background: #fff5ef;
-                border: 1.5px solid #f7d9c7;
-                border-radius: 9px;
-                width: 50px;
-                height: 50px;
+                font-size: 1.3rem;
+                background: #ffe6f2;
+                border: 2px solid #ffc6e0;
+                border-radius: 15px;
+                width: 55px;
+                height: 55px;
                 cursor: pointer;
-                transition: background 0.13s, box-shadow 0.2s;
-                box-shadow: 0 2px 8px #ffe2b850;
+                transition: transform 0.15s;
             }
-            .number-pad button:active {
-                background: #ffd6a5;
-                box-shadow: 0 1px 3px #ffbb8f70;
+            .number-pad button:hover {
+                background: #ffd6ec;
+                transform: scale(1.1);
             }
             #birthcode {
                 font-size: 1.15rem;
                 font-weight: bold;
-                background: #f4ede4;
+                background: #fff0f6;
                 border: 0;
-                border-radius: 9px;
+                border-radius: 15px;
                 padding: 8px 0;
-                width: 155px;
+                width: 160px;
                 margin-bottom: 12px;
                 text-align: center;
                 letter-spacing: 2px;
-                color: #fa7c4d;
+                color: #ff5fa2;
             }
+
             .action-btn {
-                margin-top: 8px;
+                margin-top: 10px;
                 padding: 13px 0;
                 width: 220px;
                 border: none;
-                border-radius: 13px;
-                font-size: 1.18rem;
-                font-weight: 600;
-                background: linear-gradient(90deg, #ffa976, #ff6f61);
+                border-radius: 20px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                background: linear-gradient(90deg, #ff91c1, #ffa9d6);
                 color: white;
                 cursor: pointer;
-                box-shadow: 0 3px 14px #ffe1ca8a;
-                transition: background 0.22s, transform 0.08s;
+                box-shadow: 0 3px 14px rgba(255, 150, 200, 0.4);
+                transition: transform 0.1s;
             }
             .action-btn:active {
-                background: linear-gradient(90deg, #ffb992, #f04b3d);
-                transform: translateY(1.5px);
+                transform: scale(0.96);
+                background: linear-gradient(90deg, #ff7ab2, #ff91c1);
             }
+
             @media (max-width: 700px) {
                 .container {
                     flex-direction: column;
-                    padding: 18px 4vw;
+                    padding: 20px;
                 }
                 .left,
                 .right {
@@ -162,7 +164,7 @@
                     align-items: center;
                 }
                 .right {
-                    margin-top: 28px;
+                    margin-top: 25px;
                 }
             }
         </style>
@@ -170,33 +172,16 @@
     <body>
         <div class="container">
             <div class="left">
-                <img
-                    src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80"
-                    alt="Birthday cake"
-                    id="cakeimg"
-                />
-                <div class="welcome">
-                    Chúc mừng sinh nhật<br />Bạn yêu của tuii ❤️
-                </div>
+                <img src="/anh/17.jpg" alt="Birthday cake" id="cakeimg" />
+                <div class="welcome">🎂 Happy Birthday<br />My Cutie 💕</div>
             </div>
             <div class="right">
-                <label for="name">Tên của mom là gì zọ...</label>
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Tên của mom..."
-                    autocomplete="off"
-                />
-                <label for="birthcode" style="margin-top: 18px"
-                    >Tui ko nói pass là 0708 đâu nha :3</label
+                <label for="name">Nhập đúng tên nha...</label>
+                <input type="text" id="name" autocomplete="off" />
+                <label for="birthcode" style="margin-top: 16px"
+                    >Đố mom đoán được 🎀</label
                 >
-                <input
-                    type="text"
-                    id="birthcode"
-                    maxlength="4"
-                    placeholder=""
-                    readonly
-                />
+                <input type="text" id="birthcode" maxlength="4" readonly />
 
                 <div class="number-pad">
                     <button onclick="pressNum('1')">1</button>
@@ -212,11 +197,13 @@
                     <button onclick="pressNum('0')">0</button>
                     <button onclick="clearNum()">⌫</button>
                 </div>
+
                 <button class="action-btn" onclick="checkInfo()">
                     Mở quà 🎁
                 </button>
             </div>
         </div>
+
         <script>
             function pressNum(num) {
                 const bc = document.getElementById("birthcode");
@@ -229,14 +216,12 @@
             function checkInfo() {
                 const name = document.getElementById("name").value.trim();
                 const code = document.getElementById("birthcode").value.trim();
-                if (name.toLowerCase() === "nhung" && code === "0708") {
+                if (name.toLowerCase() === "linh" && code === "1009") {
                     window.location.href = "birthday.html";
                 } else {
-                    alert("❌ Sai rồi nhập lại đy momm❤️");
+                    alert("❌ Sai rồi, nhập lại đi 🥺");
                 }
             }
-            // Đổi ảnh bánh kem tại đây:
-            document.getElementById("cakeimg").src ="/anh/12.jpg";
         </script>
     </body>
 </html>

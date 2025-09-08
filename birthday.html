@@ -2,7 +2,7 @@
 <html lang="vi">
     <head>
         <meta charset="UTF-8" />
-        <title>Chúc Mừng Sinh Nhật Nhung 🎂</title>
+        <title>Chúc Mừng Sinh Nhật Tống Linh 🎂🎂🎂</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <link
             href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap"
@@ -93,8 +93,6 @@
                 width: 100vw;
                 height: 100vh;
                 pointer-events: none;
-                overflow: visible;
-                /* Hiển thị khi mở quà */
                 display: none;
             }
             .gallery-animate.show {
@@ -102,8 +100,8 @@
             }
             .gallery-animate img {
                 position: absolute;
-                border-radius: 32px;
-                box-shadow: 0 6px 48px #ffc5ec95;
+                border-radius: 20px;
+                box-shadow: 0 4px 20px #ffc5ec95;
                 opacity: 0;
                 will-change: transform, opacity;
                 pointer-events: none;
@@ -241,13 +239,10 @@
             }
         </style>
     </head>
-
     <body>
         <div class="bg-glow"></div>
         <canvas class="confetti"></canvas>
-        <!-- Ảnh nền chảy từ trên xuống -->
         <div class="gallery-animate" id="galleryAnimate"></div>
-        <!-- Thiệp giữa màn hình -->
         <div class="gift-center" id="giftCenter">
             <div class="gift-box" id="giftBox" title="Bấm để mở quà">
                 <img
@@ -258,14 +253,16 @@
             </div>
         </div>
         <div class="card-wrap" id="cardWrap">
-            <div class="birthday-card" id="birthdayCard">
-                <h1>Chúc mừng sinh nhật Nhung 🎂</h1>
+            <div class="birthday-card">
+                <h1>Chúc mừng sinh nhật Tống Linhh🎂</h1>
                 <div class="msg">
-                    Chúc Nhung luôn xinh đẹp, rạng rỡ,<br />
-                    thật nhiều niềm vui và may mắn trong cuộc sống.<br />
-                    Mãi đáng yêu và thành công nhé!<br />
-                    <span style="font-size: 1.7rem; color: #ffb3e9"
-                        >💖🌷✨</span
+                    Chúc bạn tui lúc nào cũng xinh đẹp, rạng rỡ, ăn nhiều mà vẫn
+                    gầy, chơi nhiều mà vẫn giỏi nha 😝<br />
+                    Năm nay phải thật nhiều niềm vui, may mắn kéo tới ầm ầm, cái
+                    gì cũng thuận lợi hết trơn<br />
+                    Anh em mình cứ thế thôi hẹ hẹ...
+                    <span style="font-size: 1.6rem; color: #ffb3e9"
+                        >🌷🌷</span
                     >
                 </div>
             </div>
@@ -332,7 +329,7 @@
             }
             drawConfetti();
 
-            // --------- ẢNH CHẢY TỪ TRÊN XUỐNG, LẶP VĨNH VIỄN SAU KHI MỞ QUÀ -----------
+            // --------- HIỆU ỨNG ẢNH DÀN ĐỀU, NHỎ DẦN, MỜ DẦN ---------
             const galleryImages = [
                 "anh/0.jpg",
                 "anh/1.jpg",
@@ -357,12 +354,34 @@
                 "anh/20.jpg",
                 "anh/21.jpg",
                 "anh/22.jpg",
+                "anh/23.jpg",
+                "anh/24.jpg",
+                "anh/25.jpg",
+                "anh/26.jpg",
+                "anh/27.jpg",
+                "anh/28.jpg",
+                "anh/29.jpg",
+                "anh/30.jpg",
+                "anh/31.jpg",
+                "anh/32.jpg",
+                "anh/33.jpg",
+                "anh/34.jpg",
+                "anh/35.jpg",
+                "anh/36.jpg",
+                "anh/37.jpg",
+                "anh/38.jpg",
+                "anh/39.jpg",
+                "anh/40.jpg",
+                "anh/41.jpg",
             ];
+
             const galleryAnimate = document.getElementById("galleryAnimate");
             let startShowImages = false;
+            const usedPositions = []; // lưu vị trí ngang để tránh dính nhau
 
-            function showSlideDownImage() {
+            function createFallingImage() {
                 if (!startShowImages) return;
+
                 const src =
                     galleryImages[
                         Math.floor(Math.random() * galleryImages.length)
@@ -370,54 +389,65 @@
                 const img = document.createElement("img");
                 img.src = src;
 
-                // Kích thước random
-                let w = Math.floor(
-                    window.innerWidth > 650
-                        ? Math.random() * 70 + 150
-                        : Math.random() * 55 + 100
+                // Ảnh to hơn một chút
+                const size = 230;
+                img.style.width = size + "px";
+                img.style.height = size + "px";
+
+                // Vị trí ngang random nhưng tránh dính nhau
+                let startX;
+                let attempts = 0;
+                do {
+                    startX = Math.random() * (window.innerWidth - size);
+                    attempts++;
+                } while (
+                    usedPositions.some(
+                        (x) => Math.abs(x - startX) < size + 50
+                    ) &&
+                    attempts < 10
                 );
-                let h = Math.floor(w * 1.5);
-                img.style.width = w + "px";
-                img.style.height = h + "px";
-                // Vị trí ngang random, tránh chính giữa (để không che card)
-                let leftMin = window.innerWidth * 0.05;
-                let leftMax = window.innerWidth * 0.85 - w;
-                let left = Math.random() * (leftMax - leftMin) + leftMin;
-                img.style.left = left + "px";
-                img.style.top = "-" + h + "px";
+
+                usedPositions.push(startX);
+                if (usedPositions.length > 8) usedPositions.shift();
+
+                img.style.left = startX + "px";
+                img.style.top = "-250px"; // bắt đầu ngoài màn hình
                 img.style.opacity = 0;
 
-                img.style.transition = "opacity 1.2s";
                 galleryAnimate.appendChild(img);
 
-                // Delay rồi slide xuống (đồng thời fade-in)
-                setTimeout(() => {
-                    img.style.opacity = 0.85;
-                    img.style.transition = "top 4.6s linear, opacity 1.6s";
-                    img.style.top = window.innerHeight + h + "px";
-                }, 40);
+                // Thời gian rơi (mềm mại hơn)
+                const duration = Math.random() * 5 + 9; // 9–14s
 
-                // Khi xuống tới cuối, fade-out và xóa
+                // Bắt đầu rơi + fade in 3.5s
                 setTimeout(() => {
-                    img.style.transition = "opacity 1.3s";
-                    img.style.opacity = 0;
-                    setTimeout(() => {
-                        if (img.parentNode) galleryAnimate.removeChild(img);
-                    }, 1100);
-                }, 4200); // Tổng thời gian slide xuống
+                    img.style.transition = `
+                top ${duration}s linear,
+                opacity 3.5s ease-out
+            `;
+                    img.style.top = window.innerHeight + 300 + "px"; // rơi hết khỏi màn hình
+                    img.style.opacity = 1;
+                }, 50);
+
+                // Sau khi rơi hết thì mới xóa
+                setTimeout(() => {
+                    img.remove();
+                }, duration * 1000 + 1000);
             }
 
-            // Khi đã mở quà, bắt đầu show ảnh vĩnh viễn
             function startImageEffect() {
                 if (startShowImages) return;
                 startShowImages = true;
                 galleryAnimate.classList.add("show");
-                // Hiển thị nhiều ảnh cùng lúc ban đầu
-                for (let i = 0; i < 8; i++)
-                    setTimeout(showSlideDownImage, i * 350 + 40);
-                setInterval(showSlideDownImage, 480); // ảnh chảy liên tục
+
+                // Tạo ảnh rơi đều
+                setInterval(() => {
+                    createFallingImage();
+                    if (Math.random() > 0.65) createFallingImage();
+                }, 1300); // nhịp thưa hơn để nhìn thoáng đãng
             }
 
+            // --------- MỞ HỘP QUÀ ---------
             const giftBox = document.getElementById("giftBox");
             const cardWrap = document.getElementById("cardWrap");
             const giftCenter = document.getElementById("giftCenter");
