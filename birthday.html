@@ -12,13 +12,14 @@
             :root {
                 --main-gradient: linear-gradient(
                     120deg,
-                    #ffe7f6 0%,
-                    #fceabb 100%
+                    #ffe6f2 0%,
+                    #e6f7ff 100%
                 );
                 --main-gradient2: linear-gradient(
                     135deg,
-                    #fbc2eb 0%,
-                    #f8ffae 100%
+                    #ffdde9 0%,
+                    #ffe6f9 50%,
+                    #e3faff 100%
                 );
             }
             html,
@@ -42,27 +43,27 @@
                 pointer-events: none;
                 background: radial-gradient(
                         circle at 60% 20%,
-                        #ffe5ecaa 0%,
+                        #ffe6f2b0 0%,
                         transparent 45%
                     ),
                     radial-gradient(
                         circle at 40% 70%,
-                        #f8ffae88 0%,
+                        #e3faffaa 0%,
                         transparent 60%
                     ),
                     radial-gradient(
                         circle at 80% 90%,
-                        #c1f0fb7a 0%,
+                        #ffe6ff99 0%,
                         transparent 40%
                     ),
                     radial-gradient(
                         circle at 20% 90%,
-                        #eec9fc77 0%,
+                        #d6f6ffa0 0%,
                         transparent 60%
                     ),
                     var(--main-gradient2);
                 animation: movebg 12s linear infinite alternate;
-                opacity: 0.82;
+                opacity: 0.85;
                 transition: background 1s;
             }
             @keyframes movebg {
@@ -127,7 +128,7 @@
                 transition: filter 0.18s;
                 animation: shake 1.6s infinite
                     cubic-bezier(0.8, 0.05, 0.65, 0.95);
-                filter: drop-shadow(0 8px 30px #ffd6e0a6);
+                filter: drop-shadow(0 8px 30px #ffd6f0a6);
                 position: relative;
                 z-index: 10;
             }
@@ -163,7 +164,7 @@
                 width: 100vw;
                 height: 100vh;
                 z-index: 20;
-                background: rgba(255, 255, 255, 0.09);
+                background: rgba(255, 255, 255, 0.12);
                 transition: opacity 0.7s;
                 opacity: 0;
                 pointer-events: none;
@@ -173,10 +174,10 @@
                 pointer-events: auto;
             }
             .birthday-card {
-                background: #fffbe7;
+                background: #fff0f7;
                 border-radius: 32px;
-                box-shadow: 0 6px 40px #ffd9e7a9;
-                border: 2.5px solid #ffd6e0;
+                box-shadow: 0 6px 40px #ffbde5a9;
+                border: 2.5px solid #ffd9f7;
                 padding: 32px 38px 28px 38px;
                 min-width: 330px;
                 max-width: 95vw;
@@ -197,15 +198,15 @@
             }
             .birthday-card h1 {
                 font-family: "Pacifico", cursive;
-                color: #ff63a5;
+                color: #ff6fa9;
                 font-size: 2.5rem;
                 margin-bottom: 10px;
                 margin-top: 0;
                 letter-spacing: 2px;
-                text-shadow: 0 2px 18px #ffb3c9a2, 0 0 6px #fff;
+                text-shadow: 0 2px 18px #ffc6eb, 0 0 6px #fff;
             }
             .birthday-card .msg {
-                color: #5c3457;
+                color: #5c3d57;
                 font-size: 1.18rem;
                 font-weight: 500;
                 margin-bottom: 20px;
@@ -213,8 +214,8 @@
                 line-height: 1.7;
                 background: linear-gradient(
                     90deg,
-                    #ffbddf99 0%,
-                    #fffbe799 100%
+                    #ffd9f799 0%,
+                    #e3faff99 100%
                 );
                 border-radius: 17px;
                 padding: 12px 12px 6px 12px;
@@ -261,8 +262,8 @@
                     Năm nay phải thật nhiều niềm vui, may mắn kéo tới ầm ầm, cái
                     gì cũng thuận lợi hết trơn<br />
                     Anh em mình cứ thế thôi hẹ hẹ...
-                    <span style="font-size: 1.6rem; color: #ffb3e9"
-                        >🌷🌷</span
+                    <span style="font-size: 1.6rem; color: #ff9cd6"
+                        >🌷🌷🌷</span
                     >
                 </div>
             </div>
@@ -329,72 +330,26 @@
             }
             drawConfetti();
 
-            // --------- HIỆU ỨNG ẢNH DÀN ĐỀU, NHỎ DẦN, MỜ DẦN ---------
-            const galleryImages = [
-                "anh/0.jpg",
-                "anh/1.jpg",
-                "anh/2.jpg",
-                "anh/3.jpg",
-                "anh/4.jpg",
-                "anh/5.jpg",
-                "anh/6.jpg",
-                "anh/7.jpg",
-                "anh/8.jpg",
-                "anh/9.jpg",
-                "anh/10.jpg",
-                "anh/11.jpg",
-                "anh/12.jpg",
-                "anh/13.jpg",
-                "anh/14.jpg",
-                "anh/15.jpg",
-                "anh/16.jpg",
-                "anh/17.jpg",
-                "anh/18.jpg",
-                "anh/19.jpg",
-                "anh/20.jpg",
-                "anh/21.jpg",
-                "anh/22.jpg",
-                "anh/23.jpg",
-                "anh/24.jpg",
-                "anh/25.jpg",
-                "anh/26.jpg",
-                "anh/27.jpg",
-                "anh/28.jpg",
-                "anh/29.jpg",
-                "anh/30.jpg",
-                "anh/31.jpg",
-                "anh/32.jpg",
-                "anh/33.jpg",
-                "anh/34.jpg",
-                "anh/35.jpg",
-                "anh/36.jpg",
-                "anh/37.jpg",
-                "anh/38.jpg",
-                "anh/39.jpg",
-                "anh/40.jpg",
-                "anh/41.jpg",
-            ];
-
+            // --------- HIỆU ỨNG ẢNH RƠI ---------
+            const galleryImages = Array.from(
+                { length: 42 },
+                (_, i) => `anh/${i}.jpg`
+            );
             const galleryAnimate = document.getElementById("galleryAnimate");
             let startShowImages = false;
-            const usedPositions = []; // lưu vị trí ngang để tránh dính nhau
+            const usedPositions = [];
 
             function createFallingImage() {
                 if (!startShowImages) return;
-
                 const src =
                     galleryImages[
                         Math.floor(Math.random() * galleryImages.length)
                     ];
                 const img = document.createElement("img");
                 img.src = src;
-
-                // Ảnh to hơn một chút
                 const size = 230;
                 img.style.width = size + "px";
                 img.style.height = size + "px";
-
-                // Vị trí ngang random nhưng tránh dính nhau
                 let startX;
                 let attempts = 0;
                 do {
@@ -406,30 +361,18 @@
                     ) &&
                     attempts < 10
                 );
-
                 usedPositions.push(startX);
                 if (usedPositions.length > 8) usedPositions.shift();
-
                 img.style.left = startX + "px";
-                img.style.top = "-250px"; // bắt đầu ngoài màn hình
+                img.style.top = "-250px";
                 img.style.opacity = 0;
-
                 galleryAnimate.appendChild(img);
-
-                // Thời gian rơi (mềm mại hơn)
-                const duration = Math.random() * 5 + 9; // 9–14s
-
-                // Bắt đầu rơi + fade in 3.5s
+                const duration = Math.random() * 5 + 9;
                 setTimeout(() => {
-                    img.style.transition = `
-                top ${duration}s linear,
-                opacity 3.5s ease-out
-            `;
-                    img.style.top = window.innerHeight + 300 + "px"; // rơi hết khỏi màn hình
+                    img.style.transition = `top ${duration}s linear, opacity 3.5s ease-out`;
+                    img.style.top = window.innerHeight + 300 + "px";
                     img.style.opacity = 1;
                 }, 50);
-
-                // Sau khi rơi hết thì mới xóa
                 setTimeout(() => {
                     img.remove();
                 }, duration * 1000 + 1000);
@@ -439,12 +382,10 @@
                 if (startShowImages) return;
                 startShowImages = true;
                 galleryAnimate.classList.add("show");
-
-                // Tạo ảnh rơi đều
                 setInterval(() => {
                     createFallingImage();
                     if (Math.random() > 0.65) createFallingImage();
-                }, 1300); // nhịp thưa hơn để nhìn thoáng đãng
+                }, 1300);
             }
 
             // --------- MỞ HỘP QUÀ ---------
